@@ -1,0 +1,85 @@
+body {
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+    background-image: url("leo-aKkzhrB6Mko-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: larger;
+    background-color: rgb(184, 212, 219);
+}
+
+#board {
+    background-color: skyblue;
+    /* background-image: url("tower-bridge-1654502_1280.jpg"); */
+
+}
+
+p {
+    color: rgb(8, 151, 37);
+    font-size: larger;
+    text-shadow: 2px 2px 4px rgb(12, 163, 218);
+
+}
+
+#cat{
+    width: 500;
+    height: 200px;
+    position: absolute;
+    bottom: 600px;
+    left: 250px;
+}
+
+#catTwo{
+    width: 500;
+    height: 200px;
+    position: absolute;
+    bottom: 600px;
+    right: 475px;
+}
+
+
+#toggleMusicButton{
+    position: absolute;
+    bottom: 300px;
+    right: 900px;
+}
+
+#mouse{
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 600px;
+    right: 450px;
+}
+#mouseTwo{
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 600px;
+    left: 395px;
+}
+
+/* for my paragraphs */
+#upLeft {
+    position: absolute;
+    top: 225px;
+    left: 275px;
+    width: 150px; 
+    word-wrap: break-word; 
+}
+
+.upRight {
+    position: absolute;
+    top: 225px;
+    left: 1275px;
+    width: 170px; /* Adjust the width as needed */
+    word-wrap: break-word; /* or overflow-wrap: break-word; */
+}
+
+
+@media screen and (max-width: 540px) {
+    /* Adjust styles for screens with a width of 540 pixels or less */
+    #cat, #catTwo, #mouse, #mouseTwo, p {
+        display: none; /* Hide the elements */
+    }
+}
