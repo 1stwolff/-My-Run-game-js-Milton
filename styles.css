@@ -1,85 +1,182 @@
 body {
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
     background-image: url("leo-aKkzhrB6Mko-unsplash.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     font-size: larger;
     background-color: rgb(184, 212, 219);
+    margin: 0;
 }
 
 #board {
     background-color: skyblue;
-    /* background-image: url("tower-bridge-1654502_1280.jpg"); */
-
 }
 
 p {
     color: rgb(8, 151, 37);
     font-size: larger;
     text-shadow: 2px 2px 4px rgb(12, 163, 218);
-
 }
 
-#cat{
-    width: 500;
-    height: 200px;
+#cat, #catTwo, #mouse, #mouseTwo {
+    width: 10vw; /* 10% of viewport width */
+    height: auto;
     position: absolute;
-    bottom: 600px;
-    left: 250px;
+    bottom: 70vh; /* 30% of viewport height */
+    transition: all 0.5s ease; /* Add transition for smooth changes */
 }
 
-#catTwo{
-    width: 500;
-    height: 200px;
+#cat {
+    left: 15vw; /* 15% of viewport width */
+}
+
+#catTwo {
+    right: 15vw; /* 15% of viewport width */
+}
+
+#toggleMusicButton {
     position: absolute;
-    bottom: 600px;
-    right: 475px;
+    bottom: 15vh; /* 15% of viewport height */
+    right: 47vw; /* 10% of viewport width */
+    background-color: rgb(40, 170, 17);
+    border: 1px;
+    border-radius: 10px;
 }
 
-
-#toggleMusicButton{
+#mouse, #mouseTwo {
+    width: 5vw; /* 5% of viewport width */
+    height: auto;
     position: absolute;
-    bottom: 300px;
-    right: 900px;
+    top: 75vh; /* 30% of viewport height */
 }
 
-#mouse{
-    width: 200px;
-    height: 250px;
-    position: absolute;
-    top: 600px;
-    right: 450px;
-}
-#mouseTwo{
-    width: 200px;
-    height: 250px;
-    position: absolute;
-    top: 600px;
-    left: 395px;
+#mouse {
+    right: 10vw; /* 10% of viewport width */
 }
 
-/* for my paragraphs */
+#mouseTwo {
+    left: 8vw; /* 8% of viewport width */
+}
+
 #upLeft {
     position: absolute;
-    top: 225px;
-    left: 275px;
-    width: 150px; 
-    word-wrap: break-word; 
+    top: 12vh; /* 12% of viewport height */
+    left: 21%;
+    transform: translateX(-50%);
+    width: 15vw; /* 15% of viewport width */
+    word-wrap: break-word;
 }
 
 .upRight {
     position: absolute;
-    top: 225px;
-    left: 1275px;
-    width: 170px; /* Adjust the width as needed */
-    word-wrap: break-word; /* or overflow-wrap: break-word; */
+    top: 12vh; /* 12% of viewport height */
+    left: 65%;
+    transform: translateX(50%);
+    width: 17vw; /* 17% of viewport width */
+    word-wrap: break-word;
 }
 
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#note{
+    background-color: black;
+}
+
+@media screen and (max-width: 1200px) {
+    #cat, #catTwo, #mouse, #mouseTwo, #toggleMusicButton {
+        width: 15vw;
+    }
+
+    #cat, #catTwo {
+        bottom: 25vh;
+    }
+
+    #toggleMusicButton {
+        bottom: 12vh;
+    }
+
+    #mouse, #mouseTwo {
+        top: 25vh;
+    }
+
+    #upLeft, .upRight {
+        font-size: medium;
+        width: 20vw;
+    }
+
+    
+}
+
+@media screen and (max-width: 768px) {
+    #cat, #catTwo, #mouse, #mouseTwo, #toggleMusicButton {
+        width: 20vw;
+    }
+
+    #cat, #catTwo {
+        bottom: 20vh;
+    }
+
+    #toggleMusicButton {
+        bottom: 10vh;
+    }
+
+    #mouse, #mouseTwo {
+        top: 20vh;
+    }
+
+    #upLeft, .upRight {
+        font-size: smaller;
+        width: 25vw;
+    }
+
+
+}
 
 @media screen and (max-width: 540px) {
-    /* Adjust styles for screens with a width of 540 pixels or less */
-    #cat, #catTwo, #mouse, #mouseTwo, p {
-        display: none; /* Hide the elements */
+    #cat, #catTwo, #mouse, #mouseTwo, #toggleMusicButton {
+        width: 30vw;
     }
+
+    #cat {
+        /* bottom: 15vh; */
+        display: none;
+    }
+    #catTwo{
+        top: 3vh;
+    }
+
+    #toggleMusicButton {
+        bottom: 8vh;
+    }
+
+    #mouse {
+        top: 15vh;
+    }
+
+    #mouseTwo {
+        display: none;
+    }
+
+    #upLeft, .upRight {
+        font-size: small;
+        width: 35vw;
+    }
+
+.upRight{
+    display: none;
+}
+
+#upLeft{
+    position: absolute;
+    right: 3%;
+    left: auto;
+    transform: none;
+    top: 7vh;
+}
+
 }

@@ -91,6 +91,7 @@ toggleMusicButton.addEventListener("click", function() {
     requestAnimationFrame(update);
     setInterval(placePipes, 1500); //I use this to adjust the time between when the next object appears
     document.addEventListener("keydown", moveBird); //197 move bird function is further down as well as the keydown assignments
+    document.addEventListener("touchstart", moveBird)
 }
 
 // Separate function to draw the background
@@ -195,7 +196,7 @@ function placePipes() {
 }
 
 function moveBird(e) {
-    if (e.code == "Space" || e.code == "ArrowUp") {
+    if (e.code == "Space" || e.code == "ArrowUp" || e.type === "touchstart") {
         // Jump
         targetVelocityY = -6;
 
