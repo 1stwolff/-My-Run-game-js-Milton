@@ -148,7 +148,8 @@ p {
         display: none;
     }
     #catTwo{
-        top: 3vh;
+        /* top: 3vh; */
+        display: none;
     }
 
     #toggleMusicButton {
