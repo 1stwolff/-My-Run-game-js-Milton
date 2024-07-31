@@ -227,7 +227,8 @@
 
 
 
-// chatgpt added high score 
+// chatgpt fixed my collisions kinda I still need to work on them so uncomment hit box when I do  
+
 
 let board;
 let boardWidth = 360;
@@ -237,7 +238,7 @@ let context;
 // My mouse aka the bird
 let birdWidth = 40;
 let birdHeight = 30;
-let birdX = boardWidth / 8; //x position based off canva or board dimensions
+let birdX = boardWidth / 8; // x position based off canva or board dimensions
 let birdY = boardHeight / 2;
 let birdImg;
 
@@ -259,7 +260,7 @@ let topPipeImg;
 let bottomPipeImg;
 
 // physics
-let velocityX = -3; //I use this to change the speed of my objects aka the cats
+let velocityX = -3; // I use this to change the speed of my objects aka the cats
 let velocityY = 0;
 let gravity = 0.35;
 
@@ -283,7 +284,7 @@ window.onload = function () {
 
     // load images
     birdImg = new Image();
-    birdImg.src = "—Pngtree—realistic 3d cute mouse ai_9045659.png"; //pulls in mouse image
+    birdImg.src = "—Pngtree—realistic 3d cute mouse ai_9045659.png"; // pulls in mouse image
     birdImg.onload = function () {
 
         // I put the music below this
@@ -298,7 +299,7 @@ window.onload = function () {
             } else {
               backgroundMusic.pause();
             }
-        });    //I put music above this
+        });    // I put music above this
 
         // draws in the mouse aka bird
         context.drawImage(birdImg, 0, 0, 2072, 1759, bird.x, bird.y, bird.width, bird.height);
@@ -307,7 +308,7 @@ window.onload = function () {
         backgroundImage = new Image();
         backgroundImage.src = "pexels-laura-tancredi-7078716.jpg"; // this is why changing it in my css doesn't do anything
         
-        //remember above is w I changed the background image for canva board not body
+        // remember above is w I changed the background image for canva board not body
         // Make the background Image load before the game starts
         backgroundImage.onload = function () {
             requestAnimationFrame(update);
@@ -321,7 +322,7 @@ window.onload = function () {
     bottomPipeImg.src = "cat-1767554_640.png";
 
     requestAnimationFrame(update);
-    setInterval(placePipes, 1500); //I use this to adjust the time between when the next object appears
+    setInterval(placePipes, 1500); // I use this to adjust the time between when the next object appears
     document.addEventListener("keydown", moveBird); //197 move bird function is further down as well as the keydown assignments
     document.addEventListener("touchstart", moveBird)
 }
@@ -397,13 +398,23 @@ function update() {
     // score
     context.fillStyle = "white";
     context.font = "45px sans-serif";
-    context.fillText(`Score: ${score}`, 5, 45);
-    context.fillText(`High Score: ${highScore}`, 5, 90);
+    context.fillText(`Score: ${score}`, 5, 90);
+    context.fillStyle = "green";
+    context.font = "25px sans-serif";
+    context.fillText(`High Score: ${highScore}`, 5, 45);
 
     if (gameOver) {
         context.fillStyle = "red";
         context.fillText("GAME OVER", 70, 375);
     }
+
+    // // Optional: Draw hitboxes for debugging
+    // context.strokeStyle = "red";
+    // context.strokeRect(bird.x + 5, bird.y + 5, bird.width - 10, bird.height - 10);
+    // for (let i = 0; i < pipeArray.length; i++) {
+    //     let pipe = pipeArray[i];
+    //     context.strokeRect(pipe.x + 10, pipe.y, pipe.width - 20, pipe.height); // Adjusted pipe hitbox
+    // }
 }
 
 function placePipes() {
@@ -458,11 +469,19 @@ function moveBird(e) {
     }
 }
 
-function detectCollision(a, b) { 
-    const collisionZonePadding = 5; //  I Adjust this value to make the collision zone larger
+function detectCollision(a, b) {
+    // Adjust these values to fine-tune the collision zone for the bird 
+    // for now this is good, Ill have to make a rounded dive in the future 
+    //  make sure to turn on hitbox further up when I am working on this again so that I can visually see
+// I upped the bird padding to get it closer
+    const birdCollisionPadding = 24;
 
-    return a.x + collisionZonePadding < b.x + b.width &&
-        a.x + a.width - collisionZonePadding > b.x &&
-        a.y + collisionZonePadding < b.y + b.height &&
-        a.y + a.height - collisionZonePadding > b.y;
+    // Adjust these values to fine-tune the collision zone for the pipes
+    const pipeCollisionPaddingX = 10;
+    const pipeCollisionPaddingY = 5;
+
+    return a.x + birdCollisionPadding < b.x + b.width - pipeCollisionPaddingX &&
+        a.x + a.width - birdCollisionPadding > b.x + pipeCollisionPaddingX &&
+        a.y + birdCollisionPadding < b.y + b.height - pipeCollisionPaddingY &&
+        a.y + a.height - birdCollisionPadding > b.y + pipeCollisionPaddingY;
 }
